@@ -48,9 +48,6 @@ mongodb_manage_systemd_unit: true
 # Disable transparent hugepages on systemd debian based installations
 mongodb_disable_transparent_hugepages: false
 
-# You can enable or disable NUMA support
-mongodb_use_numa: true
-
 mongodb_user: "{{ 'mongod' if ('RedHat' == ansible_os_family) else 'mongodb' }}"
 mongodb_uid:
 mongodb_gid:

@@ -57,7 +57,6 @@
   apt:
     name: numactl
     state: present
-  when: mongodb_use_numa | bool
 
 - name: Add systemd configuration if present
   template:
@@ -86,7 +85,7 @@
 - name: Install PyMongo package
   apt:
     name: python-pymongo
-  when: not mongodb_pymongo_from_pip
+  when: not mongodb_pymongo_from_pip and not no_pymongo_install
 
 - name: Install PIP
   apt:
