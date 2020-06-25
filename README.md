@@ -48,9 +48,6 @@ mongodb_manage_systemd_unit: true
 # Disable transparent hugepages on systemd debian based installations
 mongodb_disable_transparent_hugepages: false
 
-# You can enable or disable NUMA support
-mongodb_use_numa: true
-
 mongodb_user: "{{ 'mongod' if ('RedHat' == ansible_os_family) else 'mongodb' }}"
 mongodb_uid:
 mongodb_gid:
@@ -107,12 +104,6 @@ mongodb_set_parameters:
     "enableLocalhostAuthBypass": "true",
     "authenticationMechanisms": "SCRAM-SHA-1,MONGODB-CR",
   }
-
-## Extend config with arbitrary values
-# Example :
-mongodb_config:
-  replication:
-    - "enableMajorityReadConcern: false"
 
 # MMS Agent
 mongodb_mms_agent_pkg: https://cloud.mongodb.com/download/agent/monitoring/mongodb-mms-monitoring-agent_7.2.0.488-1_amd64.ubuntu1604.deb
