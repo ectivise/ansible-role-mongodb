@@ -13,6 +13,7 @@
       - pritunl-db-1:27017
       - pritunl-db-2:27017
       - pritunl-db-3:27017
+      - pritunl-db-4:27017
   when: mongodb_security_authorization == 'enabled'
   with_items:
     - "{{ mongodb_replication_params|default([]) }}"
@@ -27,6 +28,7 @@
       - pritunl-db-1:27017
       - pritunl-db-2:27017
       - pritunl-db-3:27017
+      - pritunl-db-4:27017
 
   when: ( mongodb_security_authorization == 'disabled'
         and mongodb_master is defined and mongodb_master )
@@ -44,6 +46,8 @@
     members:
       - pritunl-db-1:27017
       - pritunl-db-2:27017
+      - pritunl-db-3:27017
+      - pritunl-db-4:27017
   when: ( mongodb_security_authorization == 'disabled'
         and ( mongodb_master is not defined or not mongodb_master) )
   with_items:

@@ -11,6 +11,8 @@
     members:
       - pritunl-db-1:27017
       - pritunl-db-2:27017
+      - pritunl-db-3:27017
+      - pritunl-db-4:27017
   with_items:
     - "{{ mongodb_replication_params|default([]) }}"
   register: mongodb_replica_init
@@ -31,6 +33,8 @@
     members:
       - pritunl-db-1:27017
       - pritunl-db-2:27017
+      - pritunl-db-3:27017
+      - pritunl-db-4:27017
   with_items:
     - "{{ mongodb_replication_params|default([]) }}"
   when: mongodb_replica_init is failed
